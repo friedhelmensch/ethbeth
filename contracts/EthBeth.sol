@@ -1,7 +1,5 @@
 pragma solidity ^0.4.2;
 
-import "./ConvertLib.sol";
-
 contract EthBeth {
     
     struct Bet 
@@ -18,13 +16,21 @@ contract EthBeth {
     {
 	}
 
-	function createBet(string betText, uint amount)
+	function createBet(string betText) payable external
     {
-        openBets[betText] = Bet(msg.sender, amount);
+        if(msg.value == 0)
+        {
+            throw;
+        }
+        openBets[betText] = Bet(msg.sender, msg.value);
 	}
 
     function joinBet(string betText)
     {
+        if(openBets[betText].owner == address(0x0))
+        {
+            throw;
+        }
         runningBets[betText] = msg.sender;
     }
 

@@ -1,0 +1,35 @@
+pragma solidity ^0.4.2;
+
+import "truffle/Assert.sol";
+import "truffle/DeployedAddresses.sol";
+import "../contracts/EthBeth.sol";
+
+contract TestEthBeth 
+{
+  
+  function testCreateBetNoEther_ExpectFail() 
+  {
+    EthBeth ethBeth = EthBeth(DeployedAddresses.EthBeth());
+    //ethBeth.createBet('Marcel');
+  }
+/*
+  function testCreateBetEther_ExpectSuccess() 
+  {
+    EthBeth ethBeth = EthBeth(DeployedAddresses.EthBeth());
+    //ethBeth.send(2);
+  }
+
+  function testJoinBetFail() 
+  {
+    EthBeth ethBeth = EthBeth(DeployedAddresses.EthBeth());
+    ethBeth.createBet('Marcel');
+    ethBeth.joinBet('Hannes');
+  }
+
+  function testJoinBetSucceed() 
+  {
+    EthBeth ethBeth = EthBeth(DeployedAddresses.EthBeth());
+    ethBeth.createBet('Marcel');
+    ethBeth.joinBet('Marcel');
+  }*/
+}
