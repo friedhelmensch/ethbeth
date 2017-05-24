@@ -1,3 +1,9 @@
+![UI Sketch](https://github.com/friedhelmensch/ethbeth/blob/master/EthBeth_sketch.jpg)
+
+
+
+
+
 # truffle-init-webpack
 Example webpack project with Truffle. Includes contracts, migrations, tests, user interface and webpack build pipeline.
 
