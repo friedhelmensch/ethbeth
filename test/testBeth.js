@@ -15,16 +15,31 @@ contract('EthBeth', function(accounts)
   //   })
   // });
 
+  // it("get Number Set Number", function() 
+  // {
+  //   return EthBeth.deployed().then(function(instance) 
+  //   {
+  //     //instance.createBet.call(42, {from: accounts[1], value: 1 });
+  //     instance.setNumber(42).then(function()
+  //     {
+  //       instance.getNumber.call().then(function(number)
+  //       {
+  //         console.log("Balance returned", number.toString());   
+  //       });
+  //     });
+  //   })
+  // });
+
   it("get Number Set Number", function() 
   {
     return EthBeth.deployed().then(function(instance) 
     {
       //instance.createBet.call(42, {from: accounts[1], value: 1 });
-      instance.setNumber.call(42);
-      instance.getNumber.call().then(function(number)
-      {
-        console.log("Balance returned", number.toString());   
-      });
+      instance.setNumber(42);
+        instance.getNumber.call().then(function(number)
+        {
+          console.log("Balance returned", number.toString());   
+        });
     })
   });
 });
