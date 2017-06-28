@@ -8,63 +8,99 @@ contract EthBeth {
         uint betAmount;
     }
 
-    mapping (string => Bet) openBets;
-    mapping (string => address) runningBets;
-    mapping (string => address) results;
+    mapping (uint => Bet) openBets;
+    
+    Bet myBet;
 
-	function EthBeth() 
-    {
-	}
+    uint myNumber;
 
-	function createBet(string betText) payable external
-    {
-        if(msg.value == 0)
-        {
-            throw;
-        }
-        openBets[betText] = Bet(msg.sender, msg.value);
-	}
+	// function createBet(uint betNumber) payable external
+    // {
+    //     if(msg.value == 0)
+    //     {
+    //         throw;
+    //     }
+    //     if(openBets[betNumber].betAmount != 0)
+    //     {
+    //         throw;
+    //     }
+    //     // if(openBets[betText].owner != address(0x0))
+    //     // {
+    //     //     throw;
+    //     // }
 
-    function joinBet(string betText)
+    //     //openBets[betNumber] = Bet({owner:msg.sender, betAmount:msg.value});
+    //     //openBets[betNumber] = Bet(msg.sender, msg.value);
+    //     myBet = Bet(msg.sender, msg.value);
+	// }
+
+    function setNumber(uint number)
     {
-        if(openBets[betText].owner == address(0x0))
-        {
-            throw;
-        }
-        runningBets[betText] = msg.sender;
+        myNumber = number;
     }
 
-    function setWinner(string betText, bool isWinner)
+    function getNumber() returns (uint number)
     {
-        if(results[betText] == address(0x0)) throw;
-        if(runningBets[betText] != msg.sender || openBets[betText].owner != msg.sender) throw;
+       return myNumber;
+       //return (openBets[betNumber].betAmount, openBets[betNumber].owner);
+    }
+
+    // function createBetSimple(uint betNumber)
+    // {
+    //     myBet = Bet(msg.sender, betNumber);
+	// }
+
+    // function returnBet() returns (uint amount, address owner)
+    // {
+    //    return (myBet.betAmount, myBet.owner);
+
+    //    //return (openBets[betNumber].betAmount, openBets[betNumber].owner);
+    // }
+
+
+    // mapping (string => address) runningBets;
+    // mapping (string => address) results;
+
+    // function joinBet(uint betText)
+    // {
+    //     if(openBets[betText].owner == address(0x0))
+    //     {
+    //         throw;
+    //     }
+    //     //runningBets[betText] = msg.sender;
+    // }
+
+    // function setWinner(string betText, bool isWinner)
+    // {
+    //     if(results[betText] == address(0x0)) throw;
+    //     if(runningBets[betText] != msg.sender || openBets[betText].owner != msg.sender) throw;
         
 
-        if(results[betText] == address(0x0))
-        {
-            if(results[betText] == msg.sender)
-            {
-                if(isWinner)
-                {
-                    //you win
-                }
-            }
-        }
-        else
-        {
-            if(isWinner)
-            {
-                results[betText] = msg.sender;
-            }else
-            {
-                if(runningBets[betText] == msg.sender)
-                {
-                    results[betText] = openBets[betText].owner;
-                }else
-                {
-                    results[betText] = runningBets[betText];
-                }
-            }
-        }
-    }
+    //     if(results[betText] == address(0x0))
+    //     {
+    //         if(results[betText] == msg.sender)
+    //         {
+    //             if(isWinner)
+    //             {
+    //                 //you win
+    //             }
+    //         }
+    //     }
+    //     else
+    //     {
+    //         if(isWinner)
+    //         {
+    //             results[betText] = msg.sender;
+    //         }else
+    //         {
+    //             if(runningBets[betText] == msg.sender)
+    //             {
+    //                 results[betText] = openBets[betText].owner;
+    //             }else
+    //             {
+    //                 results[betText] = runningBets[betText];
+    //             }
+    //         }
+    //     }
+    // }
 }
