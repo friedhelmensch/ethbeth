@@ -2,44 +2,18 @@ var EthBeth = artifacts.require("./EthBeth.sol");
 
 contract('EthBeth', function(accounts) 
 {
-  // it("should create a bet by sending 1 ETH", function() 
-  // {
-  //   return EthBeth.deployed().then(function(instance) 
-  //   {
-  //     //instance.createBet.call(42, {from: accounts[1], value: 1 });
-  //     instance.createBetSimple.call(42);
-  //     instance.returnBet.call().then(function(bet)
-  //     {
-  //       console.log("Balance returned", bet[0].toString(), bet[1]);   
-  //     });
-  //   })
-  // });
-
-  // it("get Number Set Number", function() 
-  // {
-  //   return EthBeth.deployed().then(function(instance) 
-  //   {
-  //     //instance.createBet.call(42, {from: accounts[1], value: 1 });
-  //     instance.setNumber(42).then(function()
-  //     {
-  //       instance.getNumber.call().then(function(number)
-  //       {
-  //         console.log("Balance returned", number.toString());   
-  //       });
-  //     });
-  //   })
-  // });
-
-  it("get Number Set Number", function() 
+ it("setNumber and getNumber", function() 
   {
     return EthBeth.deployed().then(function(instance) 
     {
       //instance.createBet.call(42, {from: accounts[1], value: 1 });
-      instance.setNumber(42);
+      instance.setNumber(33).then(function()
+      {
         instance.getNumber.call().then(function(number)
         {
-          console.log("Balance returned", number.toString());   
+          assert.equal(33, number.toString(), "did not work");
         });
+      });
     })
   });
 });
